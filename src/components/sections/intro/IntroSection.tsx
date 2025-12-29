@@ -1,5 +1,4 @@
-// src/components/sections/IntroSection.tsx
-import { Button } from '../UI/Button';
+import { Button } from '../../UI/Button';
 import { ContentWrapper, HeartContainer, HeartSVG, Names, NamesContainer, ScrollIndicator, SectionContainer, Title } from './IntroSections.styles';
 
 // interface IntroSectionProps {

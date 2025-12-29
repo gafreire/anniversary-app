@@ -1,9 +1,9 @@
-// src/App.tsx
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { GlobalStyle } from './styles/GlobalStyles';
-import { IntroSection } from './components/sections/IntroSection';
+import { IntroSection } from './components/sections/intro/IntroSection';
 import { FloatingHearts } from './components/layout/FloatingHearts';
+import { CountersSection } from './components/sections/counters/CountersSection';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -36,6 +36,7 @@ function App() {
           <FloatingHearts />
           <ContentContainer>
             <IntroSection />
+            <CountersSection />
           </ContentContainer>
         </AppContainer>
       )}
