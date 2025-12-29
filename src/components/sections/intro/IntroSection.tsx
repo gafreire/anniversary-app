@@ -1,11 +1,11 @@
 import { Button } from '../../UI/Button';
 import { ContentWrapper, HeartContainer, HeartSVG, Names, NamesContainer, ScrollIndicator, SectionContainer, Title } from './IntroSections.styles';
 
-// interface IntroSectionProps {
-//   onNext: () => void;
-// }
+interface IntroSectionProps {
+  onNext: () => void;
+}
 
-export function IntroSection() {
+export function IntroSection({ onNext }: IntroSectionProps) {
   return (
     <SectionContainer id="intro">
       <ContentWrapper>
@@ -29,6 +29,7 @@ export function IntroSection() {
 
         <Button
           size="large"
+          onClick={onNext}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 2.5 }}
