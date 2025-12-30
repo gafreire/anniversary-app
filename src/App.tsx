@@ -4,6 +4,7 @@ import { GlobalStyle } from "./styles/GlobalStyles";
 import { IntroSection } from "./components/sections/intro/IntroSection";
 import { FloatingHearts } from "./components/layout/FloatingHearts";
 import { CountersSection } from "./components/sections/counters/CountersSection";
+import { ReasonsSection } from "./components/sections/reasons/ReasonsSection";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -44,6 +45,7 @@ function App() {
           <ContentContainer>
             <IntroSection onNext={handleNext} />
             <CountersSection />
+            <ReasonsSection />
           </ContentContainer>
         </AppContainer>
       )}
