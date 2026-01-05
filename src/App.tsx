@@ -5,6 +5,8 @@ import { IntroSection } from "./components/sections/intro/IntroSection";
 import { FloatingHearts } from "./components/layout/FloatingHearts";
 import { CountersSection } from "./components/sections/counters/CountersSection";
 import { ReasonsSection } from "./components/sections/reasons/ReasonsSection";
+import { LetterSection } from "./components/sections/letter/LetterSection";
+import { TimelineSection } from "./components/sections/timeline/TimelineSection";
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -46,6 +48,8 @@ function App() {
             <IntroSection onNext={handleNext} />
             <CountersSection />
             <ReasonsSection />
+            <LetterSection />
+            <TimelineSection />
           </ContentContainer>
         </AppContainer>
       )}

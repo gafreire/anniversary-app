@@ -6,15 +6,16 @@ import image2 from '../images/2.jpg';
 import image3 from '../images/3.jpg';
 import image4 from '../images/4.jpg';
 import image5 from '../images/5.jpg';
-import image6 from '../images/6.jpg';
+import image6 from '../images/6.jpeg';
 import image7 from '../images/7.jpg';
-import image8 from '../images/8.jpg';
+import image8 from '../images/8.jpeg';
 import image9 from '../images/9.jpg';
-import image10 from '../images/10.jpg';
+import image10 from '../images/10.jpeg';
 import image11 from '../images/11.jpg';
 import image12 from '../images/12.jpg';
-import image13 from '../images/13.jpg';
-import image14 from '../images/14.jpg';
+import image13 from '../images/13.jpeg';
+import image14 from '../images/14.jpeg';
+import image15 from '../images/15.jpeg';
 
 export interface TimelineItem {
   id: number;
@@ -62,52 +63,59 @@ export const timelineData: TimelineItem[] = [
   },
   {
     id: 7,
-    date: "06 de Janeiro de 2025",
-    text: "Mais uma desse dia especial 💍",
+    date: "26 de Janeiro de 2025",
+    text: "Nossa primeira viagem juntos 🌍",
     image: image7
   },
   {
     id: 8,
-    date: "26 de Janeiro de 2025",
-    text: "Nossa primeira viagem juntos 🌍",
+    date: "15 de Fevereiro de 2025",
+    text: "Uma prainha juntos 🏖️",
     image: image8
   },
   {
     id: 9,
-    date: "15 de Fevereiro de 2025",
-    text: "Uma prainha juntos 🏖️",
+    date: "22 de Fevereiro de 2025",
+    text: "Só porque estávamos lindos nesse dia 😍",
     image: image9
   },
   {
     id: 10,
-    date: "22 de Fevereiro de 2025",
-    text: "Só porque estávamos lindos nesse dia 😍",
+    date: "02 de Maio de 2025",
+    text: "Viajar com você é minha terapia ✈️",
     image: image10
   },
   {
     id: 11,
     date: "02 de Maio de 2025",
-    text: "Uma foto especial de uma viagem incrível 🏞️",
-    image: image11
-  },
-  {
-    id: 12,
-    date: "02 de Maio de 2025",
-    text: "Nossa melhor foto juntos 📸",
+    text: "10km com sucesso 🏃‍♂️🏃‍♀️",
     image: image12
   },
   {
+    id: 12,
+    date: "21 de Junho de 2025",
+    text: "Festa junina com você é mais divertido 🎉",
+    image: image11
+  },
+  {
     id: 13,
-    date: "02 de Maio de 2025",
-    text: "Viajar com você é minha terapia ✈️",
+    date: "07 de Julho de 2025",
+    text: "Mais uma viagem ✈️",
     image: image13
   },
   {
     id: 14,
-    date: "18 de Maio de 2025",
-    text: "10km com sucesso 🏃‍♂️🏃‍♀️",
+    date: "Agosto - Dezembro de 2025",
+    text: "Tivemos muitos momentos especiais juntos ❤️",
     image: image14
+  },
+  {
+    id: 15,
+    date: "01 de Janeiro de 2026",
+    text: "Nosso primeiro ano juntos! Feliz Ano Novo! 🎆",
+    image: image15
   }
+
 ];
 
 export const reasonsData: string[] = [

@@ -1,3 +1,5 @@
+// src/utils/dateFormatter.ts
+
 export interface DurationParts {
   months: number;
   days: number;
@@ -8,13 +10,35 @@ export interface DurationParts {
 
 export function calculateDuration(startDate: Date): DurationParts {
   const now = new Date();
-  const totalSeconds = Math.floor((now.getTime() - startDate.getTime()) / 1000);
-
-  const months = Math.floor(totalSeconds / (30 * 24 * 60 * 60));
-  const remainingAfterMonths = totalSeconds % (30 * 24 * 60 * 60);
   
-  const days = Math.floor(remainingAfterMonths / (24 * 60 * 60));
-  const remainingAfterDays = remainingAfterMonths % (24 * 60 * 60);
+  // Calcula meses de forma precisa
+  let years = now.getFullYear() - startDate.getFullYear();
+  let months = now.getMonth() - startDate.getMonth();
+  
+  // Ajusta se o dia atual for menor que o dia inicial
+  if (now.getDate() < startDate.getDate()) {
+    months--;
+  }
+  
+  // Ajusta meses negativos
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+  
+  const totalMonths = years * 12 + months;
+  
+  // Calcula dias restantes
+  const lastMonthDate = new Date(now.getFullYear(), now.getMonth(), startDate.getDate());
+  if (now.getDate() < startDate.getDate()) {
+    lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+  }
+  
+  const diffMs = now.getTime() - lastMonthDate.getTime();
+  const totalSeconds = Math.floor(diffMs / 1000);
+  
+  const days = Math.floor(totalSeconds / (24 * 60 * 60));
+  const remainingAfterDays = totalSeconds % (24 * 60 * 60);
   
   const hours = Math.floor(remainingAfterDays / 3600);
   const remainingAfterHours = remainingAfterDays % 3600;
@@ -22,7 +46,13 @@ export function calculateDuration(startDate: Date): DurationParts {
   const minutes = Math.floor(remainingAfterHours / 60);
   const seconds = remainingAfterHours % 60;
 
-  return { months, days, hours, minutes, seconds };
+  return { 
+    months: totalMonths, 
+    days, 
+    hours, 
+    minutes, 
+    seconds 
+  };
 }
 
 export function formatDuration(duration: DurationParts): string {
