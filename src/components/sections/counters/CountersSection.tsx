@@ -3,7 +3,7 @@ import { useCountdown } from '../../../utils/useCountdown';
 import { CardsContainer, CounterCard, CounterLabel, CounterValue, HeartIcon, SectionContainer, SectionTitle } from './CountersSection.styles';
 
 export function CountersSection() {
-  const startLove = new Date('2025-01-06T20:00:00');
+  const startLove = new Date('2025-01-06T00:00:00');
   const startKiss = new Date('2024-10-27T22:00:00');
 
   const loveCounter = useCountdown(startLove);

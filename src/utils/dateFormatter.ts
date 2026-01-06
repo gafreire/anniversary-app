@@ -1,6 +1,7 @@
 // src/utils/dateFormatter.ts
 
 export interface DurationParts {
+  years: number;
   months: number;
   days: number;
   hours: number;
@@ -11,43 +12,69 @@ export interface DurationParts {
 export function calculateDuration(startDate: Date): DurationParts {
   const now = new Date();
   
-  // Calcula meses de forma precisa
+  // Calcula anos completos
   let years = now.getFullYear() - startDate.getFullYear();
   let months = now.getMonth() - startDate.getMonth();
+  let days = now.getDate() - startDate.getDate();
   
-  // Ajusta se o dia atual for menor que o dia inicial
-  if (now.getDate() < startDate.getDate()) {
+  // Ajusta se o dia atual for menor
+  if (days < 0) {
     months--;
+    const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += lastMonth.getDate();
   }
   
-  // Ajusta meses negativos
+  // Ajusta se o mês atual for menor
   if (months < 0) {
     years--;
     months += 12;
   }
   
-  const totalMonths = years * 12 + months;
+  // Calcula horas, minutos e segundos do dia atual
+  const hoursStart = startDate.getHours();
+  const minutesStart = startDate.getMinutes();
+  const secondsStart = startDate.getSeconds();
   
-  // Calcula dias restantes
-  const lastMonthDate = new Date(now.getFullYear(), now.getMonth(), startDate.getDate());
-  if (now.getDate() < startDate.getDate()) {
-    lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+  const hoursNow = now.getHours();
+  const minutesNow = now.getMinutes();
+  const secondsNow = now.getSeconds();
+  
+  let hours = hoursNow - hoursStart;
+  let minutes = minutesNow - minutesStart;
+  let seconds = secondsNow - secondsStart;
+  
+  // Ajusta segundos
+  if (seconds < 0) {
+    minutes--;
+    seconds += 60;
   }
   
-  const diffMs = now.getTime() - lastMonthDate.getTime();
-  const totalSeconds = Math.floor(diffMs / 1000);
+  // Ajusta minutos
+  if (minutes < 0) {
+    hours--;
+    minutes += 60;
+  }
   
-  const days = Math.floor(totalSeconds / (24 * 60 * 60));
-  const remainingAfterDays = totalSeconds % (24 * 60 * 60);
+  // Ajusta horas
+  if (hours < 0) {
+    days--;
+    hours += 24;
+  }
   
-  const hours = Math.floor(remainingAfterDays / 3600);
-  const remainingAfterHours = remainingAfterDays % 3600;
-  
-  const minutes = Math.floor(remainingAfterHours / 60);
-  const seconds = remainingAfterHours % 60;
+  // Se dias ficou negativo, ajusta novamente
+  if (days < 0) {
+    months--;
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    days += lastMonth.getDate();
+  }
 
   return { 
-    months: totalMonths, 
+    years,
+    months, 
     days, 
     hours, 
     minutes, 
@@ -58,6 +85,9 @@ export function calculateDuration(startDate: Date): DurationParts {
 export function formatDuration(duration: DurationParts): string {
   const parts: string[] = [];
 
+  if (duration.years > 0) {
+    parts.push(`${duration.years} ${duration.years > 1 ? 'anos' : 'ano'}`);
+  }
   if (duration.months > 0) {
     parts.push(`${duration.months} ${duration.months > 1 ? 'meses' : 'mês'}`);
   }
